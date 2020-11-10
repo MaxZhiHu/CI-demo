@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEPLOY_ENV: test
+      VERSION: ${{ github.event.inputs.version }}
     steps:
     - run: |
-        echo "Version: ${{ github.event.inputs.version }}"
+        echo "Version: ${{ env.VERSION }}"
         echo "ENV: ${{ env.DEPLOY_ENV }}" 
