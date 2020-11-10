@@ -17,3 +17,5 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         VERSION=${GITHUB_SHA:0:6} sh ./.github/workflows/script.sh
+    - run: |
+        VERSION=${GITHUB_SHA:0:6} bash ./.github/workflows/script.sh
