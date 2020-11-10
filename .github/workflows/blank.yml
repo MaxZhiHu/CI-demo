@@ -3,15 +3,16 @@ on:
   workflow_dispatch:
     inputs:
       version:
-          description: 'The Version You Wanna Deploy To Test Env'
+          description: 'The Version You Wanna Deploy To Test Env (First 6 Github SHA)'
           required: true
           default: "latest"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_ENV: test
     steps:
     - run: |
-        echo "Log level: ${{ github.event.inputs.version }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
-        echo "Tags: ${{ github.event.inputs.logLevel }}" 
+        echo "Version: ${{ github.event.inputs.version }}"
+        echo "ENV: ${{ env.DEPLOY_ENV }}" 
