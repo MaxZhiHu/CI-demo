@@ -13,9 +13,6 @@ jobs:
     env:
       DEPLOY_ENV: test
       VERSION: ${{ github.event.inputs.version }}
-      VERSION1: ${{ GITHUB_SHA:0:6 }}
     steps:
     - run: |
-        echo "Version: ${{ env.VERSION }}"
-        echo "Version: ${{ env.VERSION1 }}"
-        echo "ENV: ${{ env.DEPLOY_ENV }}" 
+        VERSION=${GITHUB_SHA:0:6} sh ./.github/workflows/script.sh
