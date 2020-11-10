@@ -1,4 +1,4 @@
-name: CI
+name: test-env-deploy
 on:
   workflow_dispatch:
     inputs:
@@ -8,7 +8,7 @@ on:
           default: "latest"
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     env:
       DEPLOY_ENV: test
