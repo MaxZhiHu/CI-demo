@@ -19,6 +19,8 @@ jobs:
         echo $GITHUB_VERSION
   deploy:
     runs-on: ubuntu-latest
+    needs:
+      - build
     environment:
       name: prod
     env:
