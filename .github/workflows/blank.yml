@@ -8,11 +8,20 @@ on:
           default: "latest"
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     env:
-      DEPLOY_ENV: test
       GITHUB_VERSION: ${{ github.event.inputs.version }}
     steps:
     - uses: actions/checkout@v2
-    - run: ./.github/workflows/script.sh
+    - run: |
+        echo "build"
+        echo $GITHUB_VERSION
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+    env:
+      DEPLOY_ENV: prod
+    steps:
+    - run: echo $DEPLOY_ENV
